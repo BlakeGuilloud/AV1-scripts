@@ -4,5 +4,11 @@
   "description": "AV1 Scripts",
   "main": "index.js",
   "author": "Blake Guilloud",
-  "license": "MIT"
+  "license": "MIT",
+  "bin": {
+    "av1": "./index.js"
+  },
+  "dependencies": {
+    "commander": "^2.10.0"
+  }
 }
