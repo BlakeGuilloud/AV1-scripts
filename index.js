@@ -4,12 +4,11 @@ const commander = require('commander');
 const deployments = require('./deployments');
 
 commander.version('2.10.0');
-commander.command('deploy [value] [value]')
+commander.command('deploy [name] [bucket] [profile]')
   .description('Deploys React App')
-  .action((name, path) => {
+  .action((name, bucket, profile) => {
     console.log('name', name);
-    deployments[name];
-    // rcc.createFile(name, 'components', path);
+    deployments[name](bucket, profile);
   });
 
 commander.parse(process.argv);

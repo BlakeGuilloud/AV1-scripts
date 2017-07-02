@@ -9,6 +9,8 @@
     "av1": "./index.js"
   },
   "dependencies": {
-    "commander": "^2.10.0"
+    "aws-sdk": "^2.80.0",
+    "commander": "^2.10.0",
+    "mime": "^1.3.6"
   }
 }
