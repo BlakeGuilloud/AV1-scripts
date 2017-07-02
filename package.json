@@ -1,0 +1,8 @@
+{
+  "name": "av1-scripts",
+  "version": "0.0.1",
+  "description": "AV1 Scripts",
+  "main": "index.js",
+  "author": "Blake Guilloud",
+  "license": "MIT"
+}
