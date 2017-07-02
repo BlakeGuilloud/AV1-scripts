@@ -7,7 +7,6 @@ commander.version('2.10.0');
 commander.command('deploy [name] [bucket] [profile]')
   .description('Deploys React App')
   .action((name, bucket, profile) => {
-    console.log('name', name);
     deployments[name](bucket, profile);
   });
 

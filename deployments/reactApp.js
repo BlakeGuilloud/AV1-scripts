@@ -7,7 +7,7 @@ module.exports = (...args) => {
   const fs = require('fs');
   const mime = require('mime');
 
-  deployReactApp(...args);
+  deployReactApp(bucketArg);
 
   function deployReactApp(Bucket = 'av1.io') {
     s3.createBucket({ Bucket }, (err) => {
