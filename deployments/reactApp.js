@@ -34,7 +34,7 @@ module.exports = (...args) => {
   function fetchBucketPolicyParams(Bucket) {
     return {
       Bucket,
-      Policy: {
+      Policy: JSON.stringify({
         "Version": "2012-10-17",
         "Statement": [
           {
@@ -42,10 +42,10 @@ module.exports = (...args) => {
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:GetObject",
-            "Resource": `arn:aws:s3:::${Bucket}/*`
-          }
-        ]
-      }
+            "Resource": `arn:aws:s3:::${Bucket}/*`,
+          },
+        ],
+      }),
     }
   }
 
