@@ -14,10 +14,22 @@ module.exports = (...args) => {
       if (err) throw err;
 
       writeObjectsToS3(Bucket);
+      // putBucketWebsite(Bucket);
 
       console.log(`React App was deployed to Bucket: ${Bucket}`);
     });
   }
+
+  function putBucketWebsite(Bucket) {
+    const params = fetchBucketWebsiteParams(Bucket);
+  }
+
+  // function fetchBucketWebsiteParams(Bucket) {
+  //   return {
+  //     Bucket,
+  //     WebsiteConfiguration:
+  //   }
+  // }
 
   function writeObjectsToS3(Bucket) {
     const fileStructure = generateFileStructure(fetchRootFileStructure(), readAssetManifest());
@@ -39,6 +51,14 @@ module.exports = (...args) => {
       Key: objectKey,
       Body: fetchObjectBody(objectKey),
       ContentType: fetchObjectContentType(objectKey),
+      WebsiteConfiguration: {
+        ErrorDocument: {
+          Key: "index.html"
+        }, 
+        IndexDocument: {
+          Suffix: "index.html"
+        }
+      }
     };
   }
 
