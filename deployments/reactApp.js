@@ -15,9 +15,38 @@ module.exports = (...args) => {
 
       writeObjectsToS3(Bucket);
       putBucketWebsite(Bucket);
+      putBucketPolicy(Bucket);
 
       console.log(`React App was deployed to Bucket: ${Bucket}`);
     });
+  }
+
+  function putBucketPolicy(Bucket) {
+    const params = fetchBucketPolicyParams(Bucket);
+
+    s3.putBucketPolicy(params, (err, data) => {
+      if (err) throw err;
+
+      console.log('Bucket policy has been updated : ', data);
+    });
+  }
+
+  function fetchBucketPolicyParams(Bucket) {
+    return {
+      Bucket,
+      Policy: {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "Allow Public Access to All Objects",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": `arn:aws:s3:::${Bucket}/*`
+          }
+        ]
+      }
+    }
   }
 
   function putBucketWebsite(Bucket) {
