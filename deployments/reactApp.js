@@ -26,8 +26,6 @@ module.exports = (...args) => {
 
     s3.putBucketPolicy(params, (err, data) => {
       if (err) throw err;
-
-      console.log('Bucket policy has been updated : ', data);
     });
   }
 
@@ -54,8 +52,6 @@ module.exports = (...args) => {
 
     s3.putBucketWebsite(params, (err, data) => {
       if (err) throw err;
-
-      console.log('Bucket is now hosting site : ', data);
     })
   }
 
