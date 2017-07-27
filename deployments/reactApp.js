@@ -1,8 +1,9 @@
 module.exports = (...args) => {
-  
   const [bucketArg, profile] = args;
   const AWS = require('aws-sdk');
-  AWS.config.credentials = new AWS.SharedIniFileCredentials({ profile: profile || 'av1' });
+  AWS.config.credentials = new AWS.SharedIniFileCredentials({
+    profile: profile || 'av1',
+  });
   const s3 = new AWS.S3();
   const fs = require('fs');
   const mime = require('mime');
@@ -10,7 +11,7 @@ module.exports = (...args) => {
   deployReactApp(bucketArg);
 
   function deployReactApp(Bucket = 'av1.io') {
-    s3.createBucket({ Bucket }, (err) => {
+    s3.createBucket({ Bucket }, err => {
       if (err) throw err;
 
       writeObjectsToS3(Bucket);
@@ -24,7 +25,7 @@ module.exports = (...args) => {
   function putBucketPolicy(Bucket) {
     const params = fetchBucketPolicyParams(Bucket);
 
-    s3.putBucketPolicy(params, (err) => {
+    s3.putBucketPolicy(params, err => {
       if (err) throw err;
     });
   }
@@ -33,14 +34,14 @@ module.exports = (...args) => {
     return {
       Bucket,
       Policy: JSON.stringify({
-        'Version': '2012-10-17',
-        'Statement': [
+        Version: '2012-10-17',
+        Statement: [
           {
-            'Sid': 'Allow Public Access to All Objects',
-            'Effect': 'Allow',
-            'Principal': '*',
-            'Action': 's3:GetObject',
-            'Resource': `arn:aws:s3:::${Bucket}/*`,
+            Sid: 'Allow Public Access to All Objects',
+            Effect: 'Allow',
+            Principal: '*',
+            Action: 's3:GetObject',
+            Resource: `arn:aws:s3:::${Bucket}/*`,
           },
         ],
       }),
@@ -50,7 +51,7 @@ module.exports = (...args) => {
   function putBucketWebsite(Bucket) {
     const params = fetchBucketWebsiteParams(Bucket);
 
-    s3.putBucketWebsite(params, (err) => {
+    s3.putBucketWebsite(params, err => {
       if (err) throw err;
     });
   }
@@ -70,7 +71,10 @@ module.exports = (...args) => {
   }
 
   function writeObjectsToS3(Bucket) {
-    const fileStructure = generateFileStructure(fetchRootFileStructure(), readAssetManifest());
+    const fileStructure = generateFileStructure(
+      fetchRootFileStructure(),
+      readAssetManifest()
+    );
 
     for (let prop in fileStructure) {
       putObject(Bucket, fileStructure[prop]);
@@ -78,7 +82,7 @@ module.exports = (...args) => {
   }
 
   function putObject(Bucket, objectKey) {
-    s3.putObject(fetchObjectParams(Bucket, objectKey), (err) => {
+    s3.putObject(fetchObjectParams(Bucket, objectKey), err => {
       if (err) throw err;
     });
   }

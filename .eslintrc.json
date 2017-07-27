@@ -3,22 +3,20 @@
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": "prettier",
     "parserOptions": {
         "sourceType": "module"
     },
+    "plugins": [
+        "prettier"
+    ],
     "rules": {
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
+        "prettier/prettier": [
+            "error", {
+                "printWidth": 80,
+                "singleQuote": true,
+                "trailingComma": "es5"
+            }
         ]
     }
 }

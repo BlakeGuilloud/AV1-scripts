@@ -6,7 +6,7 @@
   "author": "Blake Guilloud",
   "license": "MIT",
   "scripts": {
-    "eslint": "eslint --init"
+    "prettify": "prettier --single-quote --print-width 80 --trailing-comma es5 --write '**/*.js'"
   },
   "bin": {
     "av1": "./index.js"
@@ -17,6 +17,9 @@
     "mime": "^1.3.6"
   },
   "devDependencies": {
-    "eslint": "^4.3.0"
+    "eslint": "^4.3.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "prettier": "^1.5.3"
   }
 }
