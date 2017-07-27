@@ -17,14 +17,14 @@ module.exports = (...args) => {
       putBucketWebsite(Bucket);
       putBucketPolicy(Bucket);
 
-      console.log(`React App was deployed to Bucket: ${Bucket}`);
+      console.log(`React App was deployed to Bucket: ${Bucket}`); // eslint-disable-line
     });
   }
 
   function putBucketPolicy(Bucket) {
     const params = fetchBucketPolicyParams(Bucket);
 
-    s3.putBucketPolicy(params, (err, data) => {
+    s3.putBucketPolicy(params, (err) => {
       if (err) throw err;
     });
   }
@@ -33,26 +33,26 @@ module.exports = (...args) => {
     return {
       Bucket,
       Policy: JSON.stringify({
-        "Version": "2012-10-17",
-        "Statement": [
+        'Version': '2012-10-17',
+        'Statement': [
           {
-            "Sid": "Allow Public Access to All Objects",
-            "Effect": "Allow",
-            "Principal": "*",
-            "Action": "s3:GetObject",
-            "Resource": `arn:aws:s3:::${Bucket}/*`,
+            'Sid': 'Allow Public Access to All Objects',
+            'Effect': 'Allow',
+            'Principal': '*',
+            'Action': 's3:GetObject',
+            'Resource': `arn:aws:s3:::${Bucket}/*`,
           },
         ],
       }),
-    }
+    };
   }
 
   function putBucketWebsite(Bucket) {
     const params = fetchBucketWebsiteParams(Bucket);
 
-    s3.putBucketWebsite(params, (err, data) => {
+    s3.putBucketWebsite(params, (err) => {
       if (err) throw err;
-    })
+    });
   }
 
   function fetchBucketWebsiteParams(Bucket) {
@@ -60,10 +60,10 @@ module.exports = (...args) => {
       Bucket,
       WebsiteConfiguration: {
         ErrorDocument: {
-          Key: "index.html",
+          Key: 'index.html',
         },
         IndexDocument: {
-          Suffix: "index.html",
+          Suffix: 'index.html',
         },
       },
     };
