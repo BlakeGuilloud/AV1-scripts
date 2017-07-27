@@ -3,7 +3,7 @@
 ## Deployment Scripts for AV1
 
 ### React App - website
-The AV1 website was bootstraped with the create-react-app cli and is hosted in an S3 bucket.
+The AV1 website was bootstraped with the create-react-app cli and is hosted in an S3 Bucket.
 
 To automate the deployment process, I have built a simple node script to push all files in the `./build` directory to the `av1.io` bucket.
 
