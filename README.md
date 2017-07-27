@@ -23,9 +23,9 @@ $ av1 deploy reactApp
 ```
 The script also accepts optional arguments of `bucket` and AWS `profile` in the case that you want to deploy a different create-react-app project.
 ```
-$ av1 deploy [bucketName] [profile]
+$ av1 deploy [deploymentType] [bucketName] [profile]
 ```
 
 ```
-$ av1 deploy myAwesomebucket default
+$ av1 deploy reactApp myAwesomebucket default
 ```
