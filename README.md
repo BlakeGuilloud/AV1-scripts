@@ -1,9 +1,8 @@
 # av1-scripts
 
+[![Build Status](https://travis-ci.org/av1-io/scripts.svg?branch=master)](https://travis-ci.org/av1-io/scripts)  
 [![NPM version](https://img.shields.io/npm/v/scripts.svg)](https://www.npmjs.com/package/av1-scripts)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](#badge)
-
-<!-- [![Build Status](https://travis-ci.org/av1-io/scripts.svg?branch=master)](https://travis-ci.org/av1-io/scripts)  -->
 
 ## Deployment Scripts for AV1
 
